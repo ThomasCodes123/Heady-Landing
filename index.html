@@ -61,25 +61,6 @@
       -webkit-backdrop-filter: blur(20px) saturate(140%);
       border: 1px solid rgba(175, 169, 236, 0.12);
     }
-    /* Bocadillo de la mascota (glassBubble: tinte accentLavender ~0.18) */
-    .bubble {
-      background: rgba(175, 169, 236, 0.16);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(175, 169, 236, 0.28);
-    }
-    .bubble::after { /* colita del bocadillo */
-      content: '';
-      position: absolute;
-      left: 38px; bottom: -9px;
-      width: 18px; height: 18px;
-      background: rgba(175, 169, 236, 0.16);
-      border-right: 1px solid rgba(175, 169, 236, 0.28);
-      border-bottom: 1px solid rgba(175, 169, 236, 0.28);
-      transform: rotate(45deg);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-    }
     ::selection { background: rgba(175,169,236,0.35); color: #fff; }
     /* Pequeña flotación de la mascota */
     @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
@@ -95,10 +76,7 @@
 
     <!-- Nav -->
     <header class="mx-auto max-w-5xl px-6 py-6 flex items-center justify-between">
-      <div class="flex items-center gap-2.5">
-        <div class="h-9 w-9 rounded-2xl bg-lav-200 flex items-center justify-center font-display text-lav-900 text-lg leading-none">H</div>
-        <span class="text-lg font-display tracking-tight text-ink">Heady</span>
-      </div>
+      <span class="text-xl font-display tracking-tight text-ink">Heady</span>
       <a href="#waitlist" class="text-sm font-medium text-inkmuted hover:text-ink transition-colors">Lista de espera →</a>
     </header>
 
@@ -115,7 +93,7 @@
           </h1>
 
           <p class="mt-6 mx-auto lg:mx-0 max-w-xl text-lg text-inkmuted leading-relaxed">
-            Registra tus migrañas en 1 toque y descubre cómo te afecta la presión barométrica. Sin formularios eternos.
+            Lleva el historial completo de tus migrañas y descubre cómo te afecta la presión barométrica. Tu cuaderno clínico, siempre contigo.
           </p>
 
           <div class="mt-8 flex flex-col sm:flex-row items-center lg:items-start gap-3 sm:justify-start justify-center">
@@ -128,11 +106,8 @@
           </div>
         </div>
 
-        <!-- Mascota con bocadillo de cristal -->
+        <!-- Mascota -->
         <div class="relative mx-auto w-full max-w-xs">
-          <div class="bubble absolute -top-4 right-0 sm:right-6 rounded-card px-5 py-3 text-sm text-ink z-10">
-            ¿Te duele la cabeza? Yo lo anoto.
-          </div>
           <img src="assets/mascot-happy.png" alt="Mascota de Heady" class="floaty w-full drop-shadow-2xl" />
         </div>
       </section>
@@ -174,15 +149,15 @@
       <!-- Características -->
       <section id="features" class="pb-24 scroll-mt-24">
         <div class="grid gap-5 sm:grid-cols-3">
-          <!-- Registro en 10 segundos -->
+          <!-- Historial de migrañas -->
           <div class="glass rounded-card p-7">
             <div class="mb-5 h-12 w-12 rounded-2xl bg-lav-200/15 flex items-center justify-center text-lav-200">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13 3 4 14h7l-1 7 9-11h-7l1-7Z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 2v3M16 2v3M3.5 9h17M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" />
               </svg>
             </div>
-            <h3 class="font-display text-xl text-ink">Registro en 10 segundos</h3>
-            <p class="mt-2 text-sm text-inkmuted leading-relaxed">Diseñado para usar en medio de una crisis. Un toque grande y ya está: nunca te pide más de lo que puedes dar en un mal día.</p>
+            <h3 class="font-display text-xl text-ink">Historial de migrañas</h3>
+            <p class="mt-2 text-sm text-inkmuted leading-relaxed">Cada episodio queda guardado en un calendario coloreado por intensidad. Mira de un vistazo cómo evolucionan tus crisis mes a mes.</p>
           </div>
 
           <!-- Detector barométrico -->
@@ -256,10 +231,7 @@
     <!-- Footer -->
     <footer class="border-t border-hair">
       <div class="mx-auto max-w-5xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-        <div class="flex items-center gap-2.5">
-          <div class="h-7 w-7 rounded-xl bg-lav-200 flex items-center justify-center font-display text-lav-900 text-sm leading-none">H</div>
-          <span class="text-sm text-inkmuted">Heady · hecho con cuidado para días difíciles.</span>
-        </div>
+        <span class="text-sm text-inkmuted"><span class="font-display text-ink">Heady</span> · hecho con cuidado para días difíciles.</span>
         <p class="text-xs text-inkmuted/70">App en desarrollo · © 2026 Heady</p>
       </div>
     </footer>
