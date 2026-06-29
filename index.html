@@ -222,6 +222,9 @@
           </div>
 
           <form action="https://formspree.io/f/mlgylzry" method="POST" class="space-y-3.5">
+            <!-- Honeypot anti-spam: oculto para humanos; si un bot lo rellena,
+                 Formspree descarta el envío. No tocar el name "_gotcha". -->
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />
             <div>
               <label for="name" class="sr-only">Nombre</label>
               <input
