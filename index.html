@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heady — El cuaderno clínico para tus migrañas</title>
+  <meta name="description" content="Registra tus migrañas en 1 toque y descubre cómo te afecta la presión barométrica. Sin formularios eternos." />
+
+  <!-- Tailwind CSS vía CDN oficial -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fuentes: Fraunces (titulares, eje SOFT como en la app) + Inter (fallback de San Francisco) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,500;9..144,600,100&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    // Tokens de color = paleta LAVANDA de la app en modo oscuro (AppThemePalette.swift)
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            // Rampa primaria (idéntica a la app)
+            lav: {
+              50:  '#EEEDFE', 100: '#CECBF6', 200: '#AFA9EC', 400: '#7F77DD',
+              600: '#534AB7', 800: '#3C3489', 900: '#26215C',
+            },
+            // Neutros base — modo oscuro
+            bg:        '#121019', // appBackground (dark)
+            surface:   '#1E1B2B', // surface (dark)
+            ink:       '#F2F1FA', // textPrimary (dark)
+            inkmuted:  '#A8A4BE', // textSecondary (dark)
+            hair:      '#322E45', // separator (dark)
+          },
+          fontFamily: {
+            // Serif solo para titulares grandes, como en la app
+            display: ['Fraunces', 'Georgia', 'serif'],
+            // Cuerpo: San Francisco del sistema, Inter como fallback
+            body: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Text', 'Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            // glassCard usa cornerRadius 20 por defecto
+            card: '20px',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body { -webkit-font-smoothing: antialiased; }
+    /* Resplandor lavanda detrás del hero (eco del acento) */
+    .glow {
+      background: radial-gradient(55% 50% at 50% 0%, rgba(127,119,221,0.22) 0%, rgba(127,119,221,0) 70%);
+    }
+    /* Superficie de cristal (emula Liquid Glass: traslúcida + blur + borde fino) */
+    .glass {
+      background: rgba(30, 27, 43, 0.55);
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border: 1px solid rgba(175, 169, 236, 0.12);
+    }
+    /* Bocadillo de la mascota (glassBubble: tinte accentLavender ~0.18) */
+    .bubble {
+      background: rgba(175, 169, 236, 0.16);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(175, 169, 236, 0.28);
+    }
+    .bubble::after { /* colita del bocadillo */
+      content: '';
+      position: absolute;
+      left: 38px; bottom: -9px;
+      width: 18px; height: 18px;
+      background: rgba(175, 169, 236, 0.16);
+      border-right: 1px solid rgba(175, 169, 236, 0.28);
+      border-bottom: 1px solid rgba(175, 169, 236, 0.28);
+      transform: rotate(45deg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    ::selection { background: rgba(175,169,236,0.35); color: #fff; }
+    /* Pequeña flotación de la mascota */
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .floaty { animation: float 6s ease-in-out infinite; }
+  </style>
+</head>
+
+<body class="bg-bg text-ink font-body antialiased">
+
+  <div class="glow pointer-events-none absolute inset-x-0 top-0 h-[680px]"></div>
+
+  <div class="relative">
+
+    <!-- Nav -->
+    <header class="mx-auto max-w-5xl px-6 py-6 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="h-9 w-9 rounded-2xl bg-lav-200 flex items-center justify-center font-display text-lav-900 text-lg leading-none">H</div>
+        <span class="text-lg font-display tracking-tight text-ink">Heady</span>
+      </div>
+      <a href="#waitlist" class="text-sm font-medium text-inkmuted hover:text-ink transition-colors">Lista de espera →</a>
+    </header>
+
+    <!-- Hero -->
+    <main class="mx-auto max-w-5xl px-6">
+      <section class="pt-12 pb-16 sm:pt-16 sm:pb-20 grid lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
+        <div class="text-center lg:text-left">
+          <span class="inline-block mb-6 rounded-full glass px-4 py-1.5 text-xs font-medium text-lav-200">
+            App en desarrollo · iPhone
+          </span>
+
+          <h1 class="font-display text-ink leading-[1.04] tracking-tight text-4xl sm:text-5xl md:text-6xl">
+            El cuaderno clínico que usarías con los ojos entrecerrados.
+          </h1>
+
+          <p class="mt-6 mx-auto lg:mx-0 max-w-xl text-lg text-inkmuted leading-relaxed">
+            Registra tus migrañas en 1 toque y descubre cómo te afecta la presión barométrica. Sin formularios eternos.
+          </p>
+
+          <div class="mt-8 flex flex-col sm:flex-row items-center lg:items-start gap-3 sm:justify-start justify-center">
+            <a href="#waitlist" class="w-full sm:w-auto text-center rounded-2xl bg-lav-200 hover:bg-lav-100 transition-colors px-7 py-3.5 text-base font-semibold text-lav-900 shadow-lg shadow-lav-400/20">
+              Unirme a la lista de espera
+            </a>
+            <a href="#features" class="w-full sm:w-auto text-center rounded-2xl glass hover:border-lav-200/40 transition-colors px-7 py-3.5 text-base font-medium text-ink">
+              Ver cómo funciona
+            </a>
+          </div>
+        </div>
+
+        <!-- Mascota con bocadillo de cristal -->
+        <div class="relative mx-auto w-full max-w-xs">
+          <div class="bubble absolute -top-4 right-0 sm:right-6 rounded-card px-5 py-3 text-sm text-ink z-10">
+            ¿Te duele la cabeza? Yo lo anoto.
+          </div>
+          <img src="assets/mascot-happy.png" alt="Mascota de Heady" class="floaty w-full drop-shadow-2xl" />
+        </div>
+      </section>
+
+      <!-- Tira de intensidad (eco del calendario de la app) -->
+      <section class="pb-20">
+        <div class="glass rounded-card p-6 sm:p-8">
+          <div class="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-8">
+            <div class="shrink-0">
+              <p class="font-display text-2xl text-ink">Tu mes, de un vistazo</p>
+              <p class="mt-1 text-sm text-inkmuted">Cada día se colorea según la intensidad.</p>
+            </div>
+            <div class="flex flex-wrap gap-1.5">
+              <!-- celdas: vacío + rampa de intensidad (s200 / s400 / s600) -->
+              <span class="h-6 w-6 rounded-md" style="background:#232030"></span>
+              <span class="h-6 w-6 rounded-md" style="background:#232030"></span>
+              <span class="h-6 w-6 rounded-md bg-lav-200"></span>
+              <span class="h-6 w-6 rounded-md" style="background:#232030"></span>
+              <span class="h-6 w-6 rounded-md bg-lav-400"></span>
+              <span class="h-6 w-6 rounded-md bg-lav-600"></span>
+              <span class="h-6 w-6 rounded-md" style="background:#232030"></span>
+              <span class="h-6 w-6 rounded-md bg-lav-200"></span>
+              <span class="h-6 w-6 rounded-md" style="background:#232030"></span>
+              <span class="h-6 w-6 rounded-md bg-lav-400"></span>
+              <span class="h-6 w-6 rounded-md" style="background:#232030"></span>
+              <span class="h-6 w-6 rounded-md" style="background:#232030"></span>
+              <span class="h-6 w-6 rounded-md bg-lav-600"></span>
+              <span class="h-6 w-6 rounded-md bg-lav-200"></span>
+            </div>
+            <div class="flex items-center gap-3 text-xs text-inkmuted shrink-0">
+              <span class="flex items-center gap-1.5"><span class="h-3 w-3 rounded bg-lav-200"></span> leve</span>
+              <span class="flex items-center gap-1.5"><span class="h-3 w-3 rounded bg-lav-400"></span> media</span>
+              <span class="flex items-center gap-1.5"><span class="h-3 w-3 rounded bg-lav-600"></span> intensa</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Características -->
+      <section id="features" class="pb-24 scroll-mt-24">
+        <div class="grid gap-5 sm:grid-cols-3">
+          <!-- Registro en 10 segundos -->
+          <div class="glass rounded-card p-7">
+            <div class="mb-5 h-12 w-12 rounded-2xl bg-lav-200/15 flex items-center justify-center text-lav-200">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 3 4 14h7l-1 7 9-11h-7l1-7Z" />
+              </svg>
+            </div>
+            <h3 class="font-display text-xl text-ink">Registro en 10 segundos</h3>
+            <p class="mt-2 text-sm text-inkmuted leading-relaxed">Diseñado para usar en medio de una crisis. Un toque grande y ya está: nunca te pide más de lo que puedes dar en un mal día.</p>
+          </div>
+
+          <!-- Detector barométrico -->
+          <div class="glass rounded-card p-7">
+            <div class="mb-5 h-12 w-12 rounded-2xl bg-lav-200/15 flex items-center justify-center text-lav-200">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm0 0 3.5-3.5M12 21a9 9 0 1 1 0-18 9 9 0 0 1 0 18Z" />
+              </svg>
+            </div>
+            <h3 class="font-display text-xl text-ink">Detector barométrico</h3>
+            <p class="mt-2 text-sm text-inkmuted leading-relaxed">Captura la presión atmosférica al instante y la cruza con tus episodios para enseñarte el patrón.</p>
+          </div>
+
+          <!-- Respirador de crisis -->
+          <div class="glass rounded-card p-7">
+            <div class="mb-5 h-12 w-12 rounded-2xl bg-lav-200/15 flex items-center justify-center text-lav-200">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21c4.97 0 9-3.13 9-7 0-2.5-2-4-4-4-1.5 0-2.5 1-3 2-.5-1-1.5-2-3-2 .5-2 0-5-2-7-1 4-4 5.5-4 9 0 .7.1 1.4.3 2" />
+              </svg>
+            </div>
+            <h3 class="font-display text-xl text-ink">Respirador de crisis</h3>
+            <p class="mt-2 text-sm text-inkmuted leading-relaxed">Alivio guiado mientras pasa lo peor, sin salir de la app y sin luces que molesten.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Captura de Email -->
+      <section id="waitlist" class="pb-24 scroll-mt-24">
+        <div class="glass rounded-[28px] p-8 sm:p-12 grid md:grid-cols-[0.8fr_1fr] gap-8 items-center">
+          <!-- Mascota cariñosa -->
+          <div class="text-center md:text-left">
+            <img src="assets/mascot-loved.png" alt="" class="w-36 mx-auto md:mx-0 mb-4" />
+            <h2 class="font-display text-3xl text-ink leading-tight">Entra a la beta</h2>
+            <p class="mt-2 text-sm text-inkmuted leading-relaxed">
+              Plazas limitadas. Los beta testers reciben <span class="text-lav-200 font-medium">2 meses gratis</span> de la versión Pro.
+            </p>
+          </div>
+
+          <form action="https://formspree.io/f/mlgylzry" method="POST" class="space-y-3.5">
+            <div>
+              <label for="name" class="sr-only">Nombre</label>
+              <input
+                id="name" name="name" type="text" required
+                placeholder="Tu nombre"
+                class="w-full rounded-xl bg-bg/60 border border-hair px-4 py-3.5 text-ink placeholder-inkmuted/70 focus:border-lav-200 focus:outline-none focus:ring-2 focus:ring-lav-200/30 transition"
+              />
+            </div>
+            <div>
+              <label for="email" class="sr-only">Email</label>
+              <input
+                id="email" name="email" type="email" required
+                placeholder="tu@email.com"
+                class="w-full rounded-xl bg-bg/60 border border-hair px-4 py-3.5 text-ink placeholder-inkmuted/70 focus:border-lav-200 focus:outline-none focus:ring-2 focus:ring-lav-200/30 transition"
+              />
+            </div>
+            <button
+              type="submit"
+              class="w-full rounded-xl bg-lav-200 hover:bg-lav-100 transition-colors px-6 py-3.5 text-base font-semibold text-lav-900 shadow-lg shadow-lav-400/20"
+            >
+              Unirme a la lista de espera
+            </button>
+            <p class="text-center text-xs text-inkmuted/80 pt-1">Sin spam. Solo te avisamos cuando abramos la beta.</p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-hair">
+      <div class="mx-auto max-w-5xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div class="flex items-center gap-2.5">
+          <div class="h-7 w-7 rounded-xl bg-lav-200 flex items-center justify-center font-display text-lav-900 text-sm leading-none">H</div>
+          <span class="text-sm text-inkmuted">Heady · hecho con cuidado para días difíciles.</span>
+        </div>
+        <p class="text-xs text-inkmuted/70">App en desarrollo · © 2026 Heady</p>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
