@@ -59,12 +59,12 @@
         <!-- ══════════════════════════ ESPAÑOL ══════════════════════════ -->
         <article class="doc" data-lang="es">
           <h1 class="font-display text-3xl sm:text-4xl text-ink leading-tight">Política de privacidad</h1>
-          <p class="mt-2 text-sm">Última actualización: 7 de julio de 2026 · Aplica a la app <strong>Heady</strong> (iOS) y a este sitio web.</p>
+          <p class="mt-2 text-sm">Última actualización: 16 de septiembre de 2026 · Aplica a la app <strong>Heady</strong> (iOS) y a este sitio web.</p>
 
           <h2>Lo esencial, en tres líneas</h2>
           <ul>
             <li><strong>Tus datos de salud viven en tu iPhone y en tu iCloud personal.</strong> No tenemos servidores propios: no podemos ver tus migrañas, síntomas ni notas, y por tanto tampoco venderlos ni compartirlos.</li>
-            <li>La única información que sale hacia terceros es <strong>anónima</strong>: estadísticas de uso de la interfaz (TelemetryDeck) y el estado de tu suscripción (RevenueCat). Nunca incluye datos de salud.</li>
+            <li>La información que sale hacia terceros va ligada a un identificador <strong>anónimo</strong>: estadísticas de uso de la interfaz, más tu género y tu rango de edad (PostHog), y el estado de tu suscripción (RevenueCat). Nunca incluye datos de salud.</li>
             <li>No hay cuentas, no hay publicidad, no hay rastreo entre apps y no vendemos datos. Nunca.</li>
           </ul>
 
@@ -86,7 +86,9 @@
           <p>Los pagos los procesa <strong>Apple</strong> (App Store); nunca vemos tu tarjeta ni tus datos de facturación. Para saber si tu suscripción está activa usamos <strong>RevenueCat</strong> (RevenueCat, Inc.), que recibe un identificador <strong>anónimo</strong> generado por la app y tu historial de compras dentro de Heady. Ese identificador no está vinculado a tu nombre, email ni identidad.</p>
 
           <h2>6. Estadísticas de uso (analítica)</h2>
-          <p>Usamos <strong>TelemetryDeck</strong> (TelemetryDeck GmbH, Alemania, RGPD), un servicio de analítica anónima, para saber qué pantallas se usan y mejorar la app. Solo enviamos eventos de interfaz (p. ej. "se abrió Insights"). <strong>Jamás enviamos datos de salud</strong>, y las señales se anonimizan de forma que no permiten identificarte ni rastrearte.</p>
+          <p>Usamos <strong>PostHog</strong> (PostHog, Inc.), alojado en sus servidores de la <strong>Unión Europea</strong> (Fráncfort), para entender cómo se usa la app y mejorarla. Recibe eventos de interfaz: qué pantallas abres, cuánto tiempo pasas en cada una y qué botones pulsas. Recibe además dos respuestas del cuestionario de bienvenida —tu <strong>género</strong> y tu <strong>rango de edad</strong>—, que usamos para saber en qué pantalla abandona la gente ese cuestionario y poder mejorarlo.</p>
+          <p>PostHog <strong>nunca</strong> recibe información sobre tu salud: ni la frecuencia o la duración de tus migrañas, ni tus síntomas, desencadenantes o medicación, ni nada procedente de Apple Salud, ni tus notas, ni tu nombre. Todo eso se queda en tu iPhone y en tu iCloud personal, donde no podemos verlo.</p>
+          <p>Los eventos se asocian a un identificador <strong>anónimo</strong> generado al instalar la app —el mismo que usa RevenueCat—, no a tu identidad. No se usan para publicidad, no se combinan con datos de otras empresas y no se venden. La base legal es nuestro interés legítimo en mejorar la app (art. 6.1.f del RGPD); puedes oponerte escribiéndonos.</p>
 
           <h2>7. Notificaciones</h2>
           <p>Todas las notificaciones de Heady son <strong>locales</strong>: se programan y se disparan en tu propio dispositivo (recordatorio de medicación, aviso de día de riesgo, recordatorios de registro). No usamos notificaciones push remotas con contenido nuestro.</p>
@@ -115,12 +117,12 @@
         <!-- ══════════════════════════ ENGLISH ══════════════════════════ -->
         <article class="doc hidden" data-lang="en">
           <h1 class="font-display text-3xl sm:text-4xl text-ink leading-tight">Privacy Policy</h1>
-          <p class="mt-2 text-sm">Last updated: July 7, 2026 · Applies to the <strong>Heady</strong> app (iOS) and this website.</p>
+          <p class="mt-2 text-sm">Last updated: September 16, 2026 · Applies to the <strong>Heady</strong> app (iOS) and this website.</p>
 
           <h2>The essentials, in three lines</h2>
           <ul>
             <li><strong>Your health data lives on your iPhone and in your personal iCloud.</strong> We run no servers of our own: we cannot see your migraines, symptoms or notes — and therefore cannot sell or share them.</li>
-            <li>The only information that reaches third parties is <strong>anonymous</strong>: UI usage statistics (TelemetryDeck) and your subscription status (RevenueCat). It never includes health data.</li>
+            <li>The information that reaches third parties is tied to an <strong>anonymous</strong> identifier: interface usage statistics, plus your gender and age range (PostHog), and your subscription status (RevenueCat). It never includes health data.</li>
             <li>No accounts, no ads, no cross-app tracking, and we never sell data. Ever.</li>
           </ul>
 
@@ -142,7 +144,9 @@
           <p>Payments are processed by <strong>Apple</strong> (App Store); we never see your card or billing details. To know whether your subscription is active we use <strong>RevenueCat</strong> (RevenueCat, Inc.), which receives an <strong>anonymous</strong> identifier generated by the app and your purchase history within Heady. That identifier is not linked to your name, email or identity.</p>
 
           <h2>6. Usage statistics (analytics)</h2>
-          <p>We use <strong>TelemetryDeck</strong> (TelemetryDeck GmbH, Germany, GDPR-compliant), an anonymous analytics service, to learn which screens are used and improve the app. We only send UI events (e.g. "Insights was opened"). <strong>We never send health data</strong>, and signals are anonymized so they cannot identify or track you.</p>
+          <p>We use <strong>PostHog</strong> (PostHog, Inc.), hosted on its <strong>European Union</strong> servers (Frankfurt), to understand how the app is used and improve it. It receives interface events: which screens you open, how long you spend on each one, and which buttons you tap. It also receives two answers from the welcome questionnaire — your <strong>gender</strong> and your <strong>age range</strong> — which we use to find out where people drop out of that questionnaire so we can improve it.</p>
+          <p>PostHog <strong>never</strong> receives information about your health: not how often or how long your migraines last, not your symptoms, triggers or medication, nothing from Apple Health, not your notes, and not your name. All of that stays on your iPhone and in your personal iCloud, where we cannot see it.</p>
+          <p>Events are tied to an <strong>anonymous</strong> identifier created when the app is installed — the same one RevenueCat uses — not to your identity. They are not used for advertising, not combined with data from other companies, and never sold. Our legal basis is our legitimate interest in improving the app (GDPR art. 6(1)(f)); you can object by writing to us.</p>
 
           <h2>7. Notifications</h2>
           <p>All Heady notifications are <strong>local</strong>: they are scheduled and fired on your own device (medication follow-up, risk-day alert, logging reminders). We do not use remote push notifications.</p>
